@@ -8,3 +8,7 @@
 * {
   font-family: var(--general-font-family);
 }
+
+main {
+  min-height: 100vh;
+}

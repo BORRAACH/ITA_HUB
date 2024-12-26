@@ -1,9 +1,13 @@
 <script>
   import Clock from "./components/Clock.svelte";
-import Header from "./components/Header.svelte";
+  import Header from "./components/+layout.svelte";
+
+  const darkMode = $state(localStorage);
 </script>
 
-<main>
+<main class="dark:bg-neutral-900">
   <Header />
-  <Clock />
+  <div class="px-5">
+    <Clock />
+  </div>
 </main>
