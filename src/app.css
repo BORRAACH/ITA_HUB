@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+:root {
+  --general-font-family: "Nunito", sans-serif;
+  --general-transition-property: all, cubic-bezier(0.4, 0, 0.2, 1), 150ms;
+}
+
+* {
+  font-family: var(--general-font-family);
+}
