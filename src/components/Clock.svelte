@@ -67,7 +67,7 @@
 </script>
 <div class="transition-all">
   {#if !thisYear}
-    <div class="mt-40">
+    <div class=" mt-10 md:mt-40">
       <div class="flex flex-col gap-5 lg:justify-center md:flex-row dark:text-neutral-400">
         {#if Time.getYearsLeft() !== 0}
           <div class="rounded-md p-10 flex justify-center">
@@ -102,7 +102,7 @@
   {/if}
 
   {#if thisYear}
-    <div class="mt-40">
+    <div class="mt-10 md:mt-40">
       <div class="flex flex-col gap-5 justify-center md:flex-row dark:text-neutral-400">
         {#if Time.getRemainingTimeThisYearInYears() !== 0}
           <div class="rounded-md p-10 flex justify-center">
