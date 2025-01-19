@@ -1,5 +1,5 @@
 <script lang="ts">
-  let thisYear = $state(false)
+  let thisYear = $state(true)
 
   class Time {
     static currentDate = new Date();
