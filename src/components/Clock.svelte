@@ -25,6 +25,12 @@
       return Math.floor(differenceInMonths);
     }
 
+    static getWeeksLeft() {
+      const differenceInWeeks = 
+        this.differenceOfMilisecondsToFinalTest / (7 * 24 * 60 * 60 * 1000);
+      return Math.floor(differenceInWeeks);
+    }
+
     static getDaysLeft() {
       const differenceOfDays =
         this.differenceOfMilisecondsToFinalTest / (24 * 60 * 60 * 1000);
@@ -87,6 +93,11 @@
         <div class="rounded-md p-10 flex justify-center">
           <h1 class="text-3xl font-extrabold">
             {Time.getMonthsLeft()} meses
+          </h1>
+        </div>
+        <div class="rounded-md p-10 flex justify-center">
+          <h1 class="text-3xl font-extrabold">
+            {Time.getWeeksLeft()} semanas
           </h1>
         </div>
         <div class="rounded-md p-10 flex justify-center">
