@@ -1,4 +1,6 @@
 <script lang="ts">
+  import {fade} from "svelte/transition"
+
   let thisYear = $state(true)
 
   class Time {
@@ -45,6 +47,12 @@
         this.differenceOfMilisecondsThisYearTest / (30 * 24 * 60 * 60 * 1000);
       return Math.floor(differenceInMonths);
     }
+    
+    static getRemainingTimeThisYearInWeeks() {
+      const differenceInWeeks = 
+        this.differenceOfMilisecondsThisYearTest / (7 * 24 * 60 * 60 * 1000);
+      return Math.floor(differenceInWeeks);
+    }
 
     static getRemainingTimeThisYearInDays() {
       const differenceInDays = 
@@ -67,7 +75,7 @@
 </script>
 <div class="transition-all">
   {#if !thisYear}
-    <div class=" mt-10 md:mt-40">
+    <div transition:fade={{ delay: 250, duration: 150 }} class="mt-10 md:mt-40">
       <div class="flex flex-col gap-5 lg:justify-center md:flex-row dark:text-neutral-400">
         {#if Time.getYearsLeft() !== 0}
           <div class="rounded-md p-10 flex justify-center">
@@ -102,7 +110,7 @@
   {/if}
 
   {#if thisYear}
-    <div class="mt-10 md:mt-40">
+    <div transition:fade={{ delay: 250, duration: 150 }} class="mt-10 md:mt-40">
       <div class="flex flex-col gap-5 justify-center md:flex-row dark:text-neutral-400">
         {#if Time.getRemainingTimeThisYearInYears() !== 0}
           <div class="rounded-md p-10 flex justify-center">
@@ -114,6 +122,11 @@
         <div class="rounded-md p-10 flex justify-center">
           <h1 class="text-3xl font-extrabold">
             {Time.getRemainingTimeThisYearInMonths()} meses
+          </h1>
+        </div>
+        <div class="rounded-md p-10 flex justify-center">
+          <h1 class="text-3xl font-extrabold">
+            {Time.getRemainingTimeThisYearInWeeks()} semanas
           </h1>
         </div>
         <div class="rounded-md p-10 flex justify-center">
