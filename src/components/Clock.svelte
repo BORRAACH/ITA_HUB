@@ -3,10 +3,11 @@
 
   let thisYear = $state(true)
 
-  class Time {
+  export class Time {
     static currentDate = new Date();
-    static timeLeftThisYear = new Date("2025-10-13")
-    static fullTimeLeft = new Date("2029-10-13");
+    static initialDate = new Date("2025-1-1")
+    static timeLeftThisYear = new Date("2025-10-5")
+    static fullTimeLeft = new Date("2029-10-5")
 
     static differenceOfMilisecondsToFinalTest =
       this.fullTimeLeft.getTime() - this.currentDate.getTime();
@@ -71,18 +72,24 @@
         this.differenceOfMilisecondsThisYearTest / (60 * 60 * 1000)
       return Math.floor(differenceInHours)
     }
+
+    static calculatePercent() {
+      const tempoQuePassou = this.currentDate.getTime() - this.initialDate.getTime()
+      const tempoTotalAteAProva = this.timeLeftThisYear.getTime() - this.initialDate.getTime()
+      return (tempoQuePassou / tempoTotalAteAProva) * 100
+    }
   }  
   
   function setThisYear() { 
     if (thisYear) thisYear = false;
     else thisYear = true    
   }
-  
+
 </script>
 <div class="transition-all">
   {#if !thisYear}
     <div transition:fade={{ delay: 250, duration: 150 }} class="mt-10 md:mt-40">
-      <div class="flex flex-col gap-5 lg:justify-center md:flex-row dark:text-neutral-400">
+      <div class="flex flex-col gap-5 lg:justify-center md:flex-row dark:text-white">
         {#if Time.getYearsLeft() !== 0}
           <div class="rounded-md p-10 flex justify-center">
             <h1 class="text-3xl font-extrabold">
@@ -122,7 +129,7 @@
 
   {#if thisYear}
     <div transition:fade={{ delay: 250, duration: 150 }} class="mt-10 md:mt-40">
-      <div class="flex flex-col gap-5 justify-center md:flex-row dark:text-neutral-400">
+      <div class="flex flex-col gap-5 justify-center md:flex-row dark:text-white">
         {#if Time.getRemainingTimeThisYearInYears() !== 0}
           <div class="rounded-md p-10 flex justify-center">
             <h1 class="text-3xl font-extrabold">
@@ -151,6 +158,19 @@
           </h1>
         </div>
       </div>
+      <!-- --progress-bar -->
+      <div class="flex justify-center my-10">
+        <div class="flex flex-col items-center gap-5">
+          <div class="w-[50vw] max-w-xl h-[3vh] border-[1px] border-white/50 p-[2px] rounded-sm overflow-hidden">
+            <div
+              class="bg-white h-full transition-all duration-500"
+              style="width: {Time.calculatePercent()}%;"
+            ></div>
+        </div>
+        <span class="dark:text-white">{`${Time.calculatePercent().toFixed(2)}%`}</span>
+        </div>
+      </div>
+      <!-- ------------- -->
       <div class="flex justify-center">
         <h4 class="text-slate-500 dark:text-neutral-600 mt-5">
           Este é o tempo em anos, meses, dias e horas até minha prova do ita desse ano
@@ -160,7 +180,7 @@
     {/if}
 
    <div class="flex justify-center items-center py-10">
-    <button onclick={setThisYear} class="text-neutral-900 px-2 py-1 rounded-md bg-neutral-400">
+    <button onclick={setThisYear} class="text-neutral-900 px-3 py-1 rounded-sm bg-neutral-400">
       {thisYear ? "Ultimo ano" : "Esse ano"}
     </button>
    </div>
