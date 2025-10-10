@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Noto+Color+Emoji&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --bungee-font: "Bungee", sans-serif;
+}
+
+
+.time {
+  font-family: var(--bungee-font);
+  @apply hover:scale-110 transition-all select-none;
+}
+
+.time,
+.time-number {
+  font-size: 5rem;
+  @apply text-neutral-200;
+}
+
+.time,
+.time-text {
+  font-size: 2rem;
+  @apply text-neutral-400;
+}

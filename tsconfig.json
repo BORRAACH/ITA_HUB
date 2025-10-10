@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    "baseUrl": "./", // Important: Set the base URL for path resolution
+    "paths": {
+      "@/*": ["./src/*"], // Example: alias '@' to 'src' directory
+      "@components/*": ["./src/components/*"], // Example: alias '@components' to 'src/components'
+      // Add more aliases as needed
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"] // Ensure your source files are included  
+}
