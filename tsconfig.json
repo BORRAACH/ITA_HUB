@@ -10,7 +10,9 @@
       "@/*": ["./src/*"], // Example: alias '@' to 'src' directory
       "@components/*": ["./src/components/*"], // Example: alias '@components' to 'src/components'
       // Add more aliases as needed
-    }
+    },
+    "composite": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"] // Ensure your source files are included  
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],// Ensure your source files are included  
+  
 }

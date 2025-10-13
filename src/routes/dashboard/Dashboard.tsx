@@ -7,9 +7,9 @@ export default function Dashboard() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className='flex justify-center py-[2rem]'>
-        <div className='bg-neutral-700 rounded-md p-[15rem]'></div>
+      <div className='text-neutral-200'>
+        <h1>teste</h1>
       </div>
-    </motion.div>
+    </motion.div >
   )
 }
