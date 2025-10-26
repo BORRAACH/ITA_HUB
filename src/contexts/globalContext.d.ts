@@ -1,5 +1,4 @@
-import React from "react";
-declare const globalContext: React.Context<{
+declare const globalContext: import("react").Context<{
     login: boolean;
     name: string;
     theme: string;

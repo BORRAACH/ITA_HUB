@@ -1,23 +1,9 @@
-import React, { useContext, useState } from "react"
+import { createContext, useState, type ReactNode } from 'react'
+import type { NotebookContextType, NotebookDataType } from '@/contexts/notebookTypes'
 
-interface NotebookDataType {
-  physic: string,
-  math: string,
-  chemstry: string,
-  portuguese: string,
-  english: string
-}
+const NotebookContext = createContext<NotebookContextType | undefined>(undefined)
 
-interface NotebookContextType {
-  notebookData: NotebookDataType,
-  updateNotebookData: (data: NotebookDataType) => void
-}
-
-const NotebookContext = React.createContext<NotebookContextType | undefined>(undefined)
-
-
-export const NotebookProvider = ({ children }: { children: React.ReactNode }) => {
-
+export const NotebookProvider = ({ children }: { children: ReactNode }) => {
   const [notebookData, setNotebookData] = useState<NotebookDataType>({
     physic: '',
     math: '',
@@ -31,19 +17,10 @@ export const NotebookProvider = ({ children }: { children: React.ReactNode }) =>
   }
 
   return (
-    <NotebookContext.Provider value={{ notebookData, updateNotebookData }} >
+    <NotebookContext.Provider value={{ notebookData, updateNotebookData }}>
       {children}
-    </NotebookContext.Provider >
+    </NotebookContext.Provider>
   )
-}
-
-export const useNotebook = () => {
-  const context = useContext(NotebookContext)
-
-  if (context === undefined) {
-    throw new Error("useNotebook must be used within a NoteboookProvider")
-  }
-  return context
 }
 
 export default NotebookContext

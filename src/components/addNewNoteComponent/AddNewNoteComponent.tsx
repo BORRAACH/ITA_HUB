@@ -1,13 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRef, useState, type ChangeEvent } from "react";
+import { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { FaPlus } from "react-icons/fa6";
 import z from 'zod';
 import "./AddNewNoteComponent.css";
 
-type CursorPositions = { [key: string]: number | null }
 type HoursInput = z.infer<typeof hoursSchema>
 
 const hoursSchema = z.object({
@@ -23,8 +22,6 @@ export default function AddNewNoteComponent() {
   const [rotation, setRotation] = useState(0)
   const [isHovering, setIsHovering] = useState(false);
   const [createNewNote, setCreateNewNote] = useState(false)
-  const [hoursInput, setHoursInput] = useState({ physic: '', math: '', chemstry: '', portuguese: '', english: '' });
-  const cursorPositionRef = useRef<CursorPositions>({});
   const { register, handleSubmit, reset, formState: { errors } } = useForm<HoursInput>({
     resolver: zodResolver(hoursSchema),
     defaultValues: {
@@ -55,19 +52,6 @@ export default function AddNewNoteComponent() {
   const handleClickButton = () => {
     setRotation(rotation + 90)
     setCreateNewNote(true)
-  }
-
-  const handleHoursInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, selectionStart } = event.target
-    const numericValue = value.replace(/hours/g, '').replace(/[^0-9]/g, '')
-
-    cursorPositionRef.current[name] = selectionStart
-
-    setHoursInput({ ...hoursInput, [name]: numericValue })
-  }
-
-  const handleInputValue = (courseParam: string) => {
-    return courseParam ? `${courseParam} hours` : ''
   }
 
   return (

@@ -1,6 +1,6 @@
-import React from "react";
+import { createContext } from 'react'
 
-const globalContext = React.createContext({
+const globalContext = createContext({
   login: false,
   name: "Eduardo",
   theme: 'dark',

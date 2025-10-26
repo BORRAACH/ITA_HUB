@@ -1,4 +1,4 @@
-import Clock from "../components/time/clockElem.tsx"
+import Clock from "@/components/time/clockElem"
 import { motion } from "framer-motion"
 
 export default function Time() {
