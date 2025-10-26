@@ -8,7 +8,7 @@ export default function Dashboard() {
       exit={{ opacity: 0 }}
     >
       <div className='text-neutral-200'>
-        <h1>teste</h1>
+
       </div>
     </motion.div >
   )

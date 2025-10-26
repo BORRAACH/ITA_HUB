@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import "tailwindcss";
-
-:root {
-  --nunito-font: "Nunito", sans-serif;
-}
+@import "../../assets/fonts.css";
 
 ::view-transition-old(root) {
   animation: fade-out 0.5s ease-out;
@@ -12,6 +8,7 @@
 ::view-transition-new(root) {
   animation: fade-in 0.5s ease-in;
 }
+
 
 @keyframes fade-in {
   from {
@@ -22,6 +19,8 @@
     opacity: 1;
   }
 }
+
+
 
 @keyframes fade-out {
   from {

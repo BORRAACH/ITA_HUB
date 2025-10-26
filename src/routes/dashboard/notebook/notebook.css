@@ -1,0 +1,28 @@
+@import "@/assets/fonts.css";
+@import "tailwindcss";
+
+th {
+  font-family: var(--bungee-font);
+  @apply text-neutral-400 text-2xl px-5 select-none;
+}
+
+tr.group {
+  @apply hover:bg-neutral-950 rounded-md transition-all
+}
+
+td {
+  @apply px-15 text-neutral-400 select-none transition-all group-hover:scale-120;
+  font-family: var(--bungee-font);
+}
+
+td .span-value {
+  @apply text-neutral-500 text-[1.125rem] group-hover:text-neutral-100 transition-all
+}
+
+td .span-hours {
+  @apply text-neutral-700 text-[0.875rem] group-hover:text-neutral-400 transition-all
+}
+
+.td-date {
+  @apply group-hover:text-neutral-100 transition-all
+}

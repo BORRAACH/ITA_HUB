@@ -1,11 +1,10 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import Header from "../components/header/header";
-import Time from "../routes/Time.tsx";
 import { AnimatePresence } from "framer-motion";
-import Dashboard from "./dashboard/Dashboard";
-import Layout from "./dashboard/Layout.tsx";
-import Settings from "./dashboard/Settings.tsx";
-import Notebook from "./dashboard/Notebook/Notebook";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Header from "@/components/header/Header";
+import Time from "@/routes/Time";
+import Layout from "@/routes/dashboard/Layout";
+import Notebook from "@/routes/dashboard/notebook/Notebook";
+import StudyPerformance from "@/routes/dashboard/StudyPerformance";
 
 export default function Root() {
   const location = useLocation()
@@ -16,9 +15,8 @@ export default function Root() {
       <Routes location={location} key={location.pathname}>
         <Route path={'/'} element={<Time />} />
         <Route path={'/dashboard'} element={<Layout />}>
-          <Route index element={<Dashboard />} />
-          <Route path={'settings'} element={<Settings />} />
-          <Route path={'notebook'} element={<Notebook />} />
+          <Route index path={''} element={<Notebook />} />
+          <Route path="study-performance" element={<StudyPerformance />} />
         </Route>
       </Routes>
     </AnimatePresence>

@@ -1,0 +1,28 @@
+@import "../../assets/fonts.css";
+@import "tailwindcss";
+
+
+.font-custom {
+  font-family: var(--nunito-font);
+  font-weight: 700;
+}
+
+.font-title {
+  font-family: var(--bungee-font);
+}
+
+.input-text {
+  @apply transition-all py-1 px-3 text-neutral-400 focus:scale-105 border-1 border-neutral-700 rounded-md hover:scale-105 focus:placeholder-neutral-500 focus:text-neutral-400 outline-none;
+}
+
+.error-input {
+  @apply pt-1 text-red-500 rounded-md
+}
+
+.input-box {
+  @apply flex flex-col gap-1
+}
+
+.label-input {
+  @apply text-neutral-400 text-sm
+}
